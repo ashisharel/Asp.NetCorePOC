@@ -18,8 +18,13 @@
     </div>
 </form>
 
+@if (Model.DeleteMessage != null)
+{
+    <div class="alert alert-info">@Model.DeleteMessage</div>
+}
+
 <table class="table">
-    @foreach(var restaurant in Model.Restaurants)
+    @foreach (var restaurant in Model.Restaurants)
     {
         <tr>
             <td>@restaurant.Name</td>
@@ -34,6 +39,10 @@
                    asp-page="./Edit" asp-route-restaurantId="@restaurant.Id">
                     <i class="glyphicon glyphicon-edit"></i>
                 </a>
+                <a class="btn btn-lg"
+                   asp-page="./Delete" asp-route-restaurantId="@restaurant.Id">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
             </td>
         </tr>
     }
@@ -41,4 +50,6 @@
 
 <a asp-page="./Edit" class="btn btn-primary">Add New</a>
 
-@*@Model.Message*@
+@section footer{
+    <div>@Model.Message</div>
+}

@@ -16,6 +16,8 @@ namespace Asp.NetCorePOC.Pages.Restaurants
         private readonly IRestaurantData restaurantData;
 
         public string Message { get; set; }
+        [TempData]
+        public string DeleteMessage { get; set; }
         public IEnumerable<Restaurant> Restaurants { get; set; }
         [BindProperty(SupportsGet =true)] // property binding happens on a POST by default but here we need it on a GEt request so we explicitly mention that.
         public string SearchTerm { get; set; }
